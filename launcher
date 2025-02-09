@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+videogame-launcher \
+  -e \
+    "%_game_launcher%" \
+  -l \
+    "%_game_language%" \
+  -p \
+    "%_game_platform%" \
+  "%_app_id%"

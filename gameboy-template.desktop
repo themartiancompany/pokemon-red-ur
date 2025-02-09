@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name=%_title%
+Comment=%pkgdesc%
+Type=Application
+TryExec=gearboy
+Exec=videogame-launcher -e "%_game_launcher%" -l "%_game_language%" "%_app_id%"
+Icon=%_app_id%-%_uuid%
+Terminal=false
+Categories=Game;
+Keywords=NES
+Actions=preferences;fullscreen;
+
+[Desktop Action fullscreen]
+Name=Launch in fullscreen
+Exec=videogame-launcher -f -e "%_game_launcher%" -l "%_game_language%" "%_app_id%"
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=gearboy
+
+X-Desktop-File-Install-Version=0.26
