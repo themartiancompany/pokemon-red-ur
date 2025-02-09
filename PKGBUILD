@@ -55,9 +55,9 @@ pkgname="${_pkg}"
 pkgver=1.0
 pkgrel=1
 _pkgdesc=(
-  "1999 video game developed by Nintendo"
-  "for the Game Boy Color as a version of"
-  "the 1985 NES game Super Mario Bros.."
+  "1996 role-playing video games (RPGs)"
+  "developed by Game Freak and published"
+  "by Nintendo for the Game Boy."
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
@@ -88,8 +88,8 @@ _dmca_exemption="${_archive}/about/dmca.php"
 _network=100 # gnosis
 _file_system="0x69470b18f8b8b5f92b48f6199dcb147b4be96571" # default file system deployment
 _namespace="0x926acb6aA4790ff678848A9F1C59E578B148C786" # that kid address
-_evmfs_rom_sum="5079d9d28712b2564b9ffd72167bb000596c1ec00002b67a43c0b93c10ef01af"
-_pic_sum="5556109309f70665385d4f664c060abfaa0f49d9b012e445b2828f9598ebaf85"
+_evmfs_rom_sum="fee45415c42ff3c1cc1c298af3a830e559153b5651924c8224edf0ef2e62a693"
+_pic_sum="0c804b4f962b3a3da35eaad3b84fae29bc6407e3750e59ddf726bd54920a8438"
 _evmfs_rom_uri="evmfs://${_network}/${_file_system}/${_namespace}/${_evmfs_rom_sum}"
 _evmfs_pic_uri="evmfs://${_network}/${_file_system}/${_namespace}/${_pic_sum}"
 source=(
@@ -114,7 +114,7 @@ if [[ ! " ${DLAGENTS[*]} " == *" evmfs::"* ]]; then
     "${_msg[*]}"
   _dl_agent="false"
 fi
-_rom="${_app_id}.gcb.tar.xz::${_evmfs_rom_uri}"
+_rom="${_app_id}.gb.tar.xz::${_evmfs_rom_uri}"
 _rom_sum="${_evmfs_rom_sum}"
 _pic_uri="${_evmfs_pic_uri}"
 if [[ "${_dl_agent}" == "true" ]]; then
@@ -275,7 +275,7 @@ prepare() {
   _download="false"
   if [[ "${_dl_agent}" == "false" ]]; then
     _evmfs_get \
-      "${_app_id}.gbc.tar.xz" \
+      "${_app_id}.gb.tar.xz" \
       "${_rom_sum}" \
       "${_evmfs_rom_uri}"
     _evmfs_get \
@@ -313,15 +313,15 @@ package() {
         "${pkgdir}")${_rom_dir}"
     ln \
       -s \
-      "${_rom_dir}/${_uuid}.gbc" \
-      "${pkgdir}${_game_dir}/${_uuid}.gbc"
+      "${_rom_dir}/${_uuid}.gb" \
+      "${pkgdir}${_game_dir}/${_uuid}.gb"
   fi
   install \
     -vDm644 \
-    "${_app_id}.gbc" \
-    "${_rom_install_dir}/${_uuid}.gbc"
+    "${_app_id}.gb" \
+    "${_rom_install_dir}/${_uuid}.gb"
   echo \
-    "${_rom_dir}/${_uuid}.gbc" > \
+    "${_rom_dir}/${_uuid}.gb" > \
     "${pkgdir}${_game_dir}/any"
   install \
     -vDm755 \
